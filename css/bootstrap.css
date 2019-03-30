@@ -1696,7 +1696,7 @@ pre code {
 }
 
 .table-hover .table-danger:hover > td,
-.table-hover .table-danger:hover > th {
+.table-hover .table-danger:hover > th 
   background-color: #f1b0b7;
 }
 
@@ -6511,6 +6511,10 @@ a.close.disabled {
   background-color: #007bff !important;
 }
 
+.bg-main {
+  background-color: #1693bb
+}
+
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
@@ -9870,6 +9874,12 @@ a.text-secondary:hover, a.text-secondary:focus {
 
 a.text-success:hover, a.text-success:focus {
   color: #19692c !important;
+}
+
+.text-tag {
+  border-radius: 0.25rem;
+  padding: 0.30rem 0.55rem;
+  background-color: white;
 }
 
 .text-info {
