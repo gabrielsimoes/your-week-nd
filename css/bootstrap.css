@@ -9882,6 +9882,19 @@ a.text-success:hover, a.text-success:focus {
   background-color: white;
 }
 
+/* Tags */
+.economics {
+  color: #28a745;
+}
+
+.comedy {
+  color: #df4141;
+}
+
+.physics {
+  color: #0f6db4;
+}
+
 .text-info {
   color: #17a2b8 !important;
 }
@@ -10046,3 +10059,4 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
