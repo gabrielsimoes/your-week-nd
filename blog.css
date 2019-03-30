@@ -19,11 +19,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .display-4 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 @media (min-width: 768px) {
   .display-4 {
-    font-size: 3rem;
+    font-size: 2.3rem;
   }
 }
 
@@ -68,6 +68,14 @@ h1, h2, h3, h4, h5, h6 {
   .h-md-250 { height: 250px; }
 }
 
+.normal-envelope {
+  height: 250px;
+}
+.main-envelope {height: 280px}
+
+.bp-3 {
+  padding-bottom: 3rem !important;
+}
 /*
  * Blog name and description
  */

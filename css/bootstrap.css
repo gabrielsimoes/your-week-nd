@@ -9882,18 +9882,38 @@ a.text-success:hover, a.text-success:focus {
   background-color: white;
 }
 
+.text-tag-secondary {
+  border-radius: 0.25rem;
+  padding: 0.30rem 0.55rem;
+  background-color: gray;
+  color: white;
+}
+
 /* Tags */
 .economics {
   color: #28a745;
+}
+
+.economics-secondary {
+  background-color: #28a745;
 }
 
 .comedy {
   color: #df4141;
 }
 
+.comedy-secondary {
+  color: #28a745;
+}
+
 .physics {
   color: #0f6db4;
 }
+
+.physics-secondary {
+  color: #0f6db4;
+}
+
 
 .text-info {
   color: #17a2b8 !important;
