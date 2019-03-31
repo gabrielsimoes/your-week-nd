@@ -1,8 +1,9 @@
 from users import *
+from events_mockup import events
 from flask import Flask, session, redirect, url_for, escape, request, render_template
 from jinja2 import Environment, FileSystemLoader
 import flask_login
-from events_mockup import events
+import json
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = '109u2rn0c912nr0c91n0r190'
@@ -46,13 +47,20 @@ def unauthorized_handler():
 @app.route('/', methods=['GET'])
 def main():
     if flask_login.current_user.is_authenticated:
-        return render_template('/landing.html', events=events)
+        events_file = json.load(open('events.json'))
+        events = events_file["events"]
+        event_array = []
+        for name, event in events.items():
+            event_array.append(event)
+
+        return render_template('/landing.html', events=event_array)
     else:
         return redirect(url_for('login'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
+        return render_template('/sign_up.html', endpoint='signup', tags=[str(x) for x in range(4)])
         return '''
                <form action='/signup' method='POST'>
                 <input type='text' name='username' id='username' placeholder='username'/>
@@ -77,13 +85,7 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return '''
-               <form action='/login' method='POST'>
-                <input type='text' name='username' id='username' placeholder='username'/>
-                <input type='password' name='password' id='password' placeholder='password'/>
-                <input type='submit' name='submit'/>
-               </form>
-               '''
+        return render_template('/sign_up.html', endpoint='login')
 
     username = request.form['username']
     password = request.form['password']
@@ -100,4 +102,4 @@ def login():
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
-    return 'Logged out'
+    return redirect(url_for('login'))
