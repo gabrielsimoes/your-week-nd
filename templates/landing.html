@@ -45,21 +45,20 @@
   </header>
 
   {% for event in events: %}
-    {% if events.index(event) == 0: %}
+    {% set i = loop.index - 1 %}
+    {% if i == 0: %}
     <div class="jumbotron main-envelope p-md-3 text-white rounded bg-main">
       <div class="col-md-6 px-0">
-        {% for tag in event.tags: %}
+        <!-- {% for tag in event.tags: %}
             <strong class="d-inline-block mb-1 {{tag.lower()}} text-tag">{{tag}}</strong>
-        {% endfor %}
-        <h1 class="display-4 font-italic">{{event.title}}</h1>
-        <p class="lead my-3">{{event.description}}</p>
-        <p class="lead mb-0"><a href="https://calendar.google.com/calendar/r/eventedit?text={{ event.title }}&dates=20180512T230000Z/20180513T030000Z&details={{ event.description }}&location={{ event.location }}" target="_blank" class="text-white font-weight-bold">{{event.date}}</a></p>
+        {% endfor %} -->
+        <h1 class="display-4 font-italic">{{event["title"]}}</h1>
+        <p class="lead my-3"></p>
+        <p class="lead mb-0"><a href="https://calendar.google.com/calendar/r/eventedit?text={{ event.title }}&dates=20180512T230000Z/20180513T030000Z&details={{ event.description }}&location={{ event.location }}" target="_blank" class="text-white font-weight-bold">{{event["partial_days"]["day"]}}</a></p>
       </div>
     </div>
-
-    {% else: %}
-
-      {% if events.index(event) % 2 == 1: %}
+    {% elif i < 15: %}
+      {% if i % 2 == 1: %}
     <div class="row mb-2">
       {% endif %}
 
@@ -70,8 +69,8 @@
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm normal-envelope position-relative">
           <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">{{event.title}}</h3>
-            <div class="mb-1 text-muted">{{event.date}}</div>
-            <p class="card-text mb-auto">{{event.description}}</p>
+            <div class="mb-1 text-muted">{{event["partial_days"][0]["day"]}}</div>
+            <p class="card-text mb-auto"></p>
             <a href="#" class="stretched-link">Continue reading</a>
           </div>
           <div class="col-auto d-none d-lg-block">
@@ -81,7 +80,7 @@
           </div>
         </div>
       </div>
-      {% if (events.index(event) % 2 == 0) or (events[-1] == event): %}
+      {% if (i % 2 == 0) or (i > 15): %}
     </div>
       {% endif %}
     {% endif %}
