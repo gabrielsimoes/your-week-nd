@@ -1,5 +1,5 @@
 from users import *
-from events_mockup import events
+from categories import CATEGORIES
 from flask import Flask, session, redirect, url_for, escape, request, render_template
 from jinja2 import Environment, FileSystemLoader
 import flask_login
@@ -53,22 +53,32 @@ def main():
         for name, event in events.items():
             event_array.append(event)
 
+        categories = get_categories(flask_login.current_user.id)
+
         return render_template('/landing.html', events=event_array, username=flask_login.current_user.id)
     else:
         return redirect(url_for('login'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    keys = [x for x in CATEGORIES]
+    tags = [CATEGORIES[x] for x in CATEGORIES]
+
     if request.method == 'GET':
-        return render_template('/sign_up.html', endpoint='signup', tags=[str(x) for x in range(4)])
+        return render_template('/sign_up.html', endpoint='signup', tags=tags)
 
     username = request.form['username']
     password = request.form['password']
 
+    selected_tags = []
+    for opt in request.form:
+        if opt != 'username' and opt != 'password':
+            selected_tags.append(keys[int(opt)-1])
+
     if user_exists(username):
         return 'Bad signup'
     else:
-        add_user(username, password)
+        add_user(username, password, selected_tags)
         user = User()
         user.id = username
         flask_login.login_user(user)

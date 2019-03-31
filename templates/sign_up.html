@@ -30,10 +30,10 @@
                     <div class="p-3 text-center">
                         <h4> Select your top interests: </h4>
                     </div>
-                    <div class="tags-wrapper col-6 col-sm-6 col-md-2 text-center">
+                    <div class="tags-wrapper col-6 col-sm-6 col-md-12 text-left">
                         {% for tag in tags %}
-                        <label class="check-button">Tag
-                            <input type="checkbox" value="{{ loop.index }}">
+                        <label class="check-button">{{ tag }}
+                            <input type="checkbox" name="{{ loop.index }}">
                             <span class="checkmark"></span>
                         </label>
                         {% endfor %}

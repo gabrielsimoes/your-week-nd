@@ -20,10 +20,13 @@ def user_exists(username):
     else:
         return False
 
-def add_user(username, password):
+def add_user(username, password, categories):
     users_db = load_users()
     if not user_exists(username):
-        users_db[username] = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
+        users_db[username] = {
+            'pass': bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt()),
+            'categories': categories,
+        }
         save_users(users_db)
 
 def check_user(username, password):
@@ -31,5 +34,12 @@ def check_user(username, password):
     if not user_exists(username):
         return False
     else:
-        return bcrypt.checkpw(password.encode('utf8'), users_db[username])
+        return bcrypt.checkpw(password.encode('utf8'), users_db[username]['pass'])
+
+def get_categories(username):
+    users_db = load_users()
+    if not user_exists(username):
+        return []
+    else:
+        return users_db[username]['categories']
 
