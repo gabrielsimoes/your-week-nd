@@ -1,0 +1,6 @@
+Jinja2
+pandas
+Flask
+Flask-Login
+beautifulsoup4
+requests
