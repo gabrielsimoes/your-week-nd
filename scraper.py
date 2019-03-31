@@ -1,5 +1,6 @@
 import re
 import json
+import string
 from datetime import datetime
 from pprint import pprint
 from bs4 import BeautifulSoup
@@ -145,9 +146,11 @@ def parse_event(eid):
 
     content = [j for j in [j for j in j['response']['contents'][0]['regions'] if j['name'] == 'actions'][0]['contents'] if j['class'] == 'KGOUIActionAddToCalendar'][0]['fields']
 
-    title = content['title']
-    description = content['description']
-    location = content['location']
+    fixstr = lambda s: s in set(string.printable)
+
+    title = ''.join(filter(fixstr, content['title']))
+    description = ''.join(filter(fixstr, content['description']))
+    location = ''.join(filter(fixstr, content['location']))
     date_start = int(content['startDate']['value']['kgoDeflatedData']['timestamp'])
     date_end = int(content['endDate']['value']['kgoDeflatedData']['timestamp'])
 
@@ -196,6 +199,6 @@ def scrap_calendars(output_file):
     }))
 
 
-# scrap_weeks(open("weeks.csv", "w"))
-# scrap_calendars(open("events.json", "w"))
+scrap_weeks(open("weeks.csv", "w"))
+scrap_calendars(open("events.json", "w"))
 
