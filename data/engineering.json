@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Hesburgh Libraries Hackathon – Over $9,000 in Prizes",
+		"desc": "The Hesburgh Libraries Hackathon challenges teams of Notre Dame student developers, graphic designers, subject specialists and other creatives to reimagine solutions to everyday problems. This year’s theme is Teams will  “Synergy: Holistic Solutions for the Whole Student.”develop ideas that help students to achieve more balance and better integrate the complexities of daily life. Online registration closes at 7 p.m. Friday, March 29 — visit the Hackathon website to learn more or register.",
+		"more": "Friday through Sunday, March 29 to March 31, in Collaboration Hub (Room 231), Hesburgh Library"
+	},
+	{
+		"title": "Python for Data Manipulation",
+		"desc": "Python is a widely used programming language for general purpose programming. It is free and open source. Pandas is a free Python library for data manipulation and analysis. This introductory workshop will demonstrate some of the capabilities of Python for data manipulation and analysis, with an emphasis on Pandas. Register here. ",
+		"more": "Tuesday, March 26; 2 to 3 p.m. in Room 246, Hesburgh Library"
+	},
+	{
+		"title": "Hands-On Data Structures and Iteration",
+		"desc": "“R” is the most widely used programming language for statistical computing and graphics. It is free and open source. Register here. ",
+		"more": "Friday, March 29; 10 to 11 a.m. in Classroom 246, Hesburgh Library"
+	},
+	{
+		"title": "Seminar: “Explainable Artificial Intelligence via Representer Points”",
+		"desc": "Professor Pradeep Ravikumar, Carnegie Mellon University, will propose to explain the predictions of a specific class of machine learning models, namely deep neural networks, by pointing to the set of what we call representer points in the training set, for a given test point prediction.",
+		"more": "Wednesday, March 27; 4 to 5 p.m. in Room 102, DeBartolo Hall"
+	},
+	{
+		"title": "Introduction to Geographic Information System (GIS)",
+		"desc": "GIS is a computer-based platform for the storage, visualization, analysis and interpretation of data to understand spatial relationships, patterns and trends in geographic data. Register here.",
+		"more": "Wednesday, March 27; noon to 1 p.m. in computer classroom 202, Hesburgh Library"
+	},
+	{
+		"title": "Talk: “CS for Good: Computing for the People”",
+		"desc": "Charles Crowell, professor in the Department of Psychology and director of the Idzik Computing and Digital Technologies Program, will present a talk about his experiences working on computational projects with a focus on social good. These include unique applications such as personal planning, education, rehab and therapy, as well as cybercrime.",
+		"more": "Wednesday, March 27; 7 p.m. in Room 116, DeBartolo Hall"
+	}
+]
