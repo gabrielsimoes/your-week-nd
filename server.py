@@ -1,16 +1,14 @@
 from users import *
-from flask import Flask, session, redirect, url_for, escape, request
+from flask import Flask, session, redirect, url_for, escape, request, render_template
 from jinja2 import Environment, FileSystemLoader
 import flask_login
-from template_engine import events
+from events_mockup import events
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = '109u2rn0c912nr0c91n0r190'
 
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
-
-templates = Environment(loader=FileSystemLoader('templates'))
 
 # Flask-login user object
 class User(flask_login.UserMixin):
@@ -48,7 +46,7 @@ def unauthorized_handler():
 @app.route('/', methods=['GET'])
 def main():
     if flask_login.current_user.is_authenticated:
-        return templates.get_template('landing.html').render(events=events)
+        return render_template('/landing.html', events=events)
     else:
         return redirect(url_for('login'))
 
