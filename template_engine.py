@@ -1,5 +1,6 @@
 from jinja2 import Environment, FileSystemLoader
 import json
+from datetime import datetime
 
 file_loader = FileSystemLoader('templates')
 env = Environment(loader=file_loader)
@@ -14,8 +15,14 @@ with open('events.json') as json_file:
 	# 	print(event["title"])
 	event_array = []
 	for name, event in events.items():
+		if len(event["partial_days"]) > 0:
+			weekday = datetime.strptime(event["partial_days"][0]["day"] , '%Y-%m-%d')
+			weekday = weekday.strftime('%A')
+			start_time = event["partial_days"][0]["start"][:-3]
+			end_time = event["partial_days"][0]["end"]
+			event["formatted_date"] = weekday + ", " + start_time + "-" + end_time
 		event_array.append(event)
-	print(event_array[1]["partial_days"][0]["day"])
+
 # event1 = {
 # 	"title": "NDConomics Dynamic", 
 # 	"tags": ["Economics", "Comedy", "Physics"], 
