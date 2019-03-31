@@ -50,12 +50,12 @@
     {% set i = loop.index - 1 %}
     {% if i == 0: %}
     <div class="jumbotron main-envelope p-md-3 text-white rounded bg-main">
-      <div class="col-md-6 px-0">
+      <div class="px-0">
         <strong class="d-inline-block mb-1 text-tag text-dark">{{event['category']}}</strong>
         <h1 class="display-4 font-italic">{{ event['title'] }}</h1>
         <p class="lead my-3"></p>
-      <button type="button" class="btn btn-light m-auto float-right" data-toggle="modal" data-target="#desc-modal" data-title='{{ event['title'] }}' data-link='https://calendar.google.com/calendar/r/eventedit?text={{ event['title'] }}&location={{ event['more'] }}&details={{ event['desc'] }}' data-desc='{{event['desc']}}'>More...</button>
         <p class="lead mb-0">{{ event['more'] }}</p>
+        <button type="button" class="btn btn-light mt-3" data-toggle="modal" data-target="#desc-modal" data-title='{{ event['title'] }}' data-link='https://calendar.google.com/calendar/r/eventedit?text={{ event['title'] }}&location={{ event['more'] }}&details={{ event['desc'] }}' data-more='{{ event['more'] }}' data-desc='{{event['desc']}}'>More...</button>
       </div>
     </div>
     {% elif i < 15: %}
@@ -72,7 +72,7 @@
                {{ event['more'] }}
             </div>
             <p class="card-text mb-auto"></p>
-            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#desc-modal" data-title='{{ event['title'] }}' data-link='https://calendar.google.com/calendar/r/eventedit?text={{ event['title'] }}&location={{ event['more'] }}&details={{ event['desc'] }}' data-desc='{{event['desc']}}'>More...</button>
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#desc-modal" data-title='{{ event['title'] }}' data-link='https://calendar.google.com/calendar/r/eventedit?text={{ event['title'] }}&location={{ event['more'] }}&details={{ event['desc'] }}' data-more='{{ event['more'] }}'  data-desc='{{event['desc']}}'>More...</button>
           </div>
         </div>
       </div>
@@ -109,10 +109,11 @@
             var button = $(event.relatedTarget)
             var title = button.data('title')
             var desc = button.data('desc')
+            var more = button.data('more')
             var link = button.data('link')
             var modal = $(this)
             modal.find('.modal-header > h5').text(title)
-            modal.find('.modal-body').text(desc)
+            modal.find('.modal-body').text(desc + "\n" + more)
             modal.find('a').attr('href', link)
         })
     </script>

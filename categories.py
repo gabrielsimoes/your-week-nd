@@ -22,10 +22,10 @@ for cat, name in CATEGORIES.items():
             events.append(ev)
             if cat not in categories:
                 categories[cat] = name
-            else:
-                events.append(ev)
-                ccat = ev['category']
-                if ccat not in categories:
-                    categories[ccat] = ccat.capitalize() + ' (Entertainment)'
+        else:
+            events.append(ev)
+            ccat = ev['category']
+            if ccat not in categories:
+                categories[ccat] = ccat.capitalize() + ' (Entertainment)'
 
 
