@@ -37,7 +37,7 @@ def label_sentences(corpus, label_type):
 
 rawFile = "movies.csv"
 df = pre.clean(rawFile)
-genres = set(df['Genre']) 
+genres = set(df['Genre'])
 
 X = df.Plot
 y = df.Genre
@@ -68,7 +68,7 @@ def get_vectors(model, corpus_size, vectors_size, vectors_type):
         prefix = vectors_type + '_' + str(i)
         vectors[i] = model.docvecs[prefix]
     return vectors
-    
+
 train_vectors_dbow = get_vectors(model_dbow, len(X_train), 300, 'Train')
 test_vectors_dbow = get_vectors(model_dbow, len(X_test), 300, 'Test')
 
