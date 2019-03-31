@@ -52,11 +52,8 @@ def main():
 
     user_categories = get_categories(flask_login.current_user.id)
 
-    print(user_categories)
-
     user_events = []
     for ev in events:
-        print(ev['category'])
         if ev['category'] in user_categories:
             new_ev = ev.copy()
             new_ev['category'] = categories[ev['category']]
