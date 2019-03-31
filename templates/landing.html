@@ -36,10 +36,12 @@
       <div class="col-4 pt-1">
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Andre's Week@ND</a>
+          <a class="blog-header-logo text-dark" href="/">{{ username }}'s Week@ND</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="btn btn-sm btn-outline-secondary" href="#">Log-In</a>
+          <form name="logoutForm" method="post" action="/logout">
+              <span><input type="submit" value="Logout" name="logout" class="btn btn-sm btn-outline-secondary"></span>
+          </form>
       </div>
     </div>
   </header>
@@ -72,11 +74,6 @@
             <div class="mb-1 text-muted">{{event["formatted_date"]}}</div>
             <p class="card-text mb-auto"></p>
             <a href="#" class="stretched-link">Continue reading</a>
-          </div>
-          <div class="col-auto d-none d-lg-block">
-            
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            
           </div>
         </div>
       </div>

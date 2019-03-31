@@ -53,7 +53,7 @@ def main():
         for name, event in events.items():
             event_array.append(event)
 
-        return render_template('/landing.html', events=event_array)
+        return render_template('/landing.html', events=event_array, username=flask_login.current_user.id)
     else:
         return redirect(url_for('login'))
 
@@ -61,13 +61,6 @@ def main():
 def signup():
     if request.method == 'GET':
         return render_template('/sign_up.html', endpoint='signup', tags=[str(x) for x in range(4)])
-        return '''
-               <form action='/signup' method='POST'>
-                <input type='text' name='username' id='username' placeholder='username'/>
-                <input type='password' name='password' id='password' placeholder='password'/>
-                <input type='submit' name='submit'/>
-               </form>
-               '''
 
     username = request.form['username']
     password = request.form['password']
@@ -98,7 +91,7 @@ def login():
 
     return 'Bad login'
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 @flask_login.login_required
 def logout():
     flask_login.logout_user()
