@@ -2,7 +2,7 @@ from users import *
 from flask import Flask, session, redirect, url_for, escape, request, render_template
 from jinja2 import Environment, FileSystemLoader
 import flask_login
-from template_engine import events
+from events_mockup import events
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = '109u2rn0c912nr0c91n0r190'
