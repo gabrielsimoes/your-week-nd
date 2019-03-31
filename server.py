@@ -1,9 +1,10 @@
 from users import *
-from categories import CATEGORIES
+from categories import events, categories
 from flask import Flask, session, redirect, url_for, escape, request, render_template
 from jinja2 import Environment, FileSystemLoader
 import flask_login
 import json
+import random
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = '109u2rn0c912nr0c91n0r190'
@@ -46,23 +47,29 @@ def unauthorized_handler():
 # Routes for flask
 @app.route('/', methods=['GET'])
 def main():
-    if flask_login.current_user.is_authenticated:
-        events_file = json.load(open('events.json'))
-        events = events_file["events"]
-        event_array = []
-        for name, event in events.items():
-            event_array.append(event)
-
-        categories = get_categories(flask_login.current_user.id)
-
-        return render_template('/landing.html', events=event_array, username=flask_login.current_user.id)
-    else:
+    if not flask_login.current_user.is_authenticated:
         return redirect(url_for('login'))
+
+    user_categories = get_categories(flask_login.current_user.id)
+
+    print(user_categories)
+
+    user_events = []
+    for ev in events:
+        print(ev['category'])
+        if ev['category'] in user_categories:
+            new_ev = ev.copy()
+            new_ev['category'] = categories[ev['category']]
+            user_events.append(new_ev)
+
+    random.shuffle(user_events)
+
+    return render_template('/landing.html', events=user_events, username=flask_login.current_user.id)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    keys = [x for x in CATEGORIES]
-    tags = [CATEGORIES[x] for x in CATEGORIES]
+    keys = [x for x in categories]
+    tags = [categories[x] for x in categories]
 
     if request.method == 'GET':
         return render_template('/sign_up.html', endpoint='signup', tags=tags)

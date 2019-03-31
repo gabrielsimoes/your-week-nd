@@ -52,11 +52,13 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 </form>
 
+                <p class="pb-3">
                 {% if endpoint == 'login' %}
                     <a href="/signup">Not registered yet? Click here to register!</a>
                 {% else %}
                     <a href="/login">Already registered? Click here to login!</a>
                 {% endif %}
+                </p>
             </div>
     </body>
 </html>
